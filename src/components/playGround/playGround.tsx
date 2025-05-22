@@ -1,6 +1,7 @@
 import { FaArrowLeft, FaPause } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./playGroundStyle.scss"
+import Bird from "../character/bird";
 
 const PlayGround = () => {
 
@@ -11,6 +12,7 @@ const PlayGround = () => {
             <div className="playGround-container">
                 <FaArrowLeft className="back-icon" onClick={() => navigate('/')}/>
                 <FaPause className="pause-icon"/>
+                <Bird/>
             </div>
         </>
     )
