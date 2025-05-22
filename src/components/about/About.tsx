@@ -9,7 +9,7 @@ const About = () => {
   return (
     <>
         <div className="about-container">
-        <FaArrowLeft className="back-icon" onClick={()=>navigate('/')}>Back</FaArrowLeft>
+        <FaArrowLeft className="back-icon" onClick={()=>navigate('/')}/>
         <h1 className="about-title">About</h1>
         <div className="free-text-container">
         <p className="free-text">Developer: Eliran Giladi</p>
