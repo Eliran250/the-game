@@ -1,7 +1,7 @@
 import { FaArrowLeft, FaPause } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./playGroundStyle.scss"
-import Bird from "../character/bird";
+import Bird from "../character/Bird";
 
 const PlayGround = () => {
 
