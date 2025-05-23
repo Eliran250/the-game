@@ -3,7 +3,12 @@
     width: 100%;
     position: 'relative';
     .bird-img{
+        z-index: auto;
         height: 40px;
         width: 40px;
+        position: absolute;
+        left: 20%;
+        transform: translateX(-50%);
+        transition: top  0.2s ease-in-out;
     }
 }

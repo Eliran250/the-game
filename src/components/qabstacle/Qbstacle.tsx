@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react"
-import building from "../../assets/building.png"
+import vine2 from "../../assets/vine2.png"
 import "./qbstacleStyle.scss"
+import { QBSTACLE_INTERVAL, QBSTACLE_MOVEMENT } from "../../constants/constants";
 const Qbstacle = () => {
 
     const [position, setPositon] = useState<number>(1);
 
-    const comePix: number = 1;
-
     const handlePostion = () => {
         setPositon((prev) => {
-            const newPostion = prev + comePix;
+            const newPostion = prev + QBSTACLE_MOVEMENT;
             return newPostion > 101 ? 0 : newPostion
         })
 
@@ -18,16 +17,14 @@ const Qbstacle = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             handlePostion();
-        }, 800)
+        }, QBSTACLE_INTERVAL)
         return () => clearInterval(interval);
     }, [])
-
 
     return (
         <div>
             <div className="qbstacle-container">
-                <img className="qbstacle-top" src={building} alt="" style={{ right: `${position}%`}} />
-                <img className="qbstacle-bottom" src={building} alt="" style={{ right: `${position}%`}} />
+                <img className="qbstacle-top" src={vine2} alt="" style={{ right: `${position}%`}} />
             </div>
         </div>
     )
