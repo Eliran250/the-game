@@ -1,0 +1,19 @@
+.qbstacle-container{
+    height: 100%;
+    width: 100%;
+    .qbstacle-top{
+        height: 330px;
+        width: 165px;
+        position: absolute;
+        top: -2%;
+        transform: scaleY(-1);
+        transition: transform  8s ease-in-out;
+    }
+    .qbstacle-bottom{
+        height: 330px;
+        width: 165px;
+        position: absolute;
+        bottom: 0%;
+        transition: transform  8s ease-in-out;
+    }
+}

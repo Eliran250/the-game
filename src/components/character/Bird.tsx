@@ -36,7 +36,7 @@ const Bird = () => {
     return (
         <div>
             <div className="bird-continer">
-                <img className="bird-img" style={{position: 'absolute', top: `${height}px`, left: '50%', transform: 'translateX(-50%)' }} src={birdGame} alt="bird" />
+                <img className="bird-img" style={{position: 'absolute', top: `${height}px`, left: '20%', transform: 'translateX(-50%)' }} src={birdGame} alt="bird" />
             </div>
         </div>
     )
