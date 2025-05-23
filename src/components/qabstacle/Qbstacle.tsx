@@ -2,12 +2,11 @@ import { useEffect, useState } from "react"
 import vine2 from "../../assets/vine2.png"
 import "./qbstacleStyle.scss"
 import { QBSTACLE_INTERVAL, QBSTACLE_MOVEMENT } from "../../constants/constants";
-const Qbstacle = () => {
+const Qbstacle = ({position,setPosition}:{position:number,setPosition:React.Dispatch<React.SetStateAction<number>>}) => {
 
-    const [position, setPositon] = useState<number>(1);
 
     const handlePostion = () => {
-        setPositon((prev) => {
+        setPosition((prev) => {
             const newPostion = prev + QBSTACLE_MOVEMENT;
             return newPostion > 101 ? 0 : newPostion
         })

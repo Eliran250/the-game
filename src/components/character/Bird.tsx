@@ -2,9 +2,7 @@ import { useEffect, useState } from "react"
 import "./birdStyle.scss"
 import birdGame from "../../assets/birdGame.png"
 import { BIRD_INTERVAL, GRAVITY_PIX, JUMP_HEIGHT } from "../../constants/constants";
-const Bird = () => {
-
-    const [height, setHeight] = useState<number>(200);
+const Bird = ({height,setHeight}:{height:number,setHeight:React.Dispatch<React.SetStateAction<number>>}) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
