@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./playGroundStyle.scss"
 import Bird from "../character/Bird";
 import Qbstacle from "../qabstacle/Qbstacle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { isCollision } from "../../utils/collision";
+import LostPopup from "../popup/LostPopup";
 
 const PlayGround = () => {
 
@@ -11,16 +13,24 @@ const PlayGround = () => {
 
     const [height, setHeight] = useState<number>(200);
 
+    const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isCollision(position, height)) {
+            setIsGameOver(true)
+        }
+    }, [position, height]);
 
     return (
         <>
             <div className="playGround-container">
-                <FaArrowLeft className="back-icon" onClick={() => navigate('/')}/>
-                <FaPause className="pause-icon"/>
-                <Bird height = {height} setHeight ={setHeight}/>
-                <Qbstacle position = {position} setPosition ={setPosition}/>
+                <FaArrowLeft className="back-icon" onClick={() => navigate('/')} />
+                <FaPause className="pause-icon" />
+                <Bird height={height} setHeight={setHeight} isGameOver={isGameOver}/>
+                <Qbstacle position={position} setPosition={setPosition} />
+                {isGameOver && <LostPopup />}
             </div>
         </>
     )

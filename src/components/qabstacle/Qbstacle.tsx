@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import vine2 from "../../assets/vine2.png"
 import "./qbstacleStyle.scss"
 import { QBSTACLE_INTERVAL, QBSTACLE_MOVEMENT } from "../../constants/constants";
@@ -10,7 +10,6 @@ const Qbstacle = ({position,setPosition}:{position:number,setPosition:React.Disp
             const newPostion = prev + QBSTACLE_MOVEMENT;
             return newPostion > 101 ? 0 : newPostion
         })
-
     }
 
     useEffect(() => {

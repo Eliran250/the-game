@@ -1,7 +1,14 @@
-*{
+* {
     margin: 0;
 }
-.app-container{
+.app-container {
     height: 100vh;
     width: 100vw;
+}
+button {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
 }

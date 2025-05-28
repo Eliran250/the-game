@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import "./birdStyle.scss"
 import birdGame from "../../assets/birdGame.png"
 import { BIRD_INTERVAL, GRAVITY_PIX, JUMP_HEIGHT } from "../../constants/constants";
-const Bird = ({height,setHeight}:{height:number,setHeight:React.Dispatch<React.SetStateAction<number>>}) => {
+const Bird = ({height,setHeight,isGameOver}:{height:number,setHeight:React.Dispatch<React.SetStateAction<number>>,isGameOver:boolean}) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -31,7 +31,12 @@ const Bird = ({height,setHeight}:{height:number,setHeight:React.Dispatch<React.S
     return (
         <div>
             <div className="bird-continer">
-                <img className="bird-img" style={{ top: `${height}px` }} src={birdGame} alt="bird" />
+                {!isGameOver ? <img className="bird-img" style={{ top: `${height}px` }} src={birdGame} alt="bird" /> : <div className="explosion" style={{ top: `${height}px` }}>
+          {[...Array(10)].map((_, i) => (
+            <div key={i} className="particle" />
+          ))}
+        </div>}
+                
             </div>
         </div>
     )
