@@ -16,7 +16,7 @@ const LostPopup = () => {
           <p className="details">You lost, do you wish to play again ?</p>
           <div className="controler">
             <button onClick={() => navigate('/')} className="popup-button">Manu</button>
-            <button onClick={()=>reastartGame()} className="popup-button">Back to game</button>
+            <button onClick={()=>reastartGame()} className="popup-button">Back to  the game</button>
           </div>
         </dialog>
       </div>
