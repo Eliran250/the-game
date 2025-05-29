@@ -2,7 +2,11 @@ import { useEffect } from "react"
 import "./birdStyle.scss"
 import birdGame from "../../assets/birdGame.png"
 import { BIRD_INTERVAL, GRAVITY_PIX, JUMP_HEIGHT } from "../../constants/constants";
+import { jumpSoundPlay } from "../../utils/sound";
+import { useGame } from "../../context/GameProvider";
 const Bird = ({height,setHeight,isGameOver}:{height:number,setHeight:React.Dispatch<React.SetStateAction<number>>,isGameOver:boolean}) => {
+
+  const { playGameSound } = useGame();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -22,11 +26,14 @@ const Bird = ({height,setHeight,isGameOver}:{height:number,setHeight:React.Dispa
                     const newHeight = prev - JUMP_HEIGHT;
                     return newHeight < 0 ? 0 : newHeight;
                 });
+                if (playGameSound) {
+                    jumpSoundPlay();
+                }
             }
         }
         window.addEventListener("keydown", handleKeyDown);
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, []);
+    }, [playGameSound]);
 
     return (
         <div>

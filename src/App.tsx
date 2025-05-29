@@ -3,12 +3,16 @@ import './style/appStyle.scss'
 import Home from './components/home/Home'
 import About from './components/about/About'
 import PlayGround from './components/playGround/playGround'
+import GameMusic from './components/sound/GameMusic'
+import { GameProvider } from './context/GameProvider'
 
 function App() {
 
   return (
     <>
+    <GameProvider>
       <div className='app-container'>
+        <GameMusic />
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -17,6 +21,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </div>
+      </GameProvider>
     </>
   )
 }
