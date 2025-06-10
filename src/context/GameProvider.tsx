@@ -5,6 +5,10 @@ interface GameContextType {
     setPlayGameMusic: (status: boolean) => void;
     playGameSound: boolean;
     setPlayGameSound: (status: boolean) => void;
+    health: number;
+    setHealth: (health: number) => void;
+    isGameOver: boolean;
+    setIsGameOver:(status:boolean) => void;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -12,9 +16,13 @@ const GameContext = createContext<GameContextType | null>(null);
 export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     const [playGameMusic, setPlayGameMusic] = useState(true);
     const [playGameSound, setPlayGameSound] = useState(true);
+    const [health, setHealth] = useState(100);
+    const [isGameOver, setIsGameOver] = useState<boolean>(false);
+
+
 
     return (
-        <GameContext.Provider value={{ setPlayGameMusic: setPlayGameMusic, playGameMusic: playGameMusic, playGameSound: playGameSound, setPlayGameSound: setPlayGameSound }}>
+        <GameContext.Provider value={{ setPlayGameMusic: setPlayGameMusic, playGameMusic: playGameMusic, playGameSound: playGameSound, setPlayGameSound: setPlayGameSound, health: health, setHealth: setHealth,isGameOver:isGameOver,setIsGameOver:setIsGameOver }}>
             {children}
         </GameContext.Provider>
     );

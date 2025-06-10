@@ -1,0 +1,40 @@
+.health-bar-container {
+    width: 100%;
+    height: 100%;
+    .health-bar-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        margin-left: 50px;
+        .heart-image {
+            margin-top: 12px;
+            height: 30px;
+            width: 30px;
+        }
+        .health-bar {
+            position: relative;
+            height: 18px;
+            width: 15%;
+            padding: 5px;
+            border: 2px solid black;
+            border-radius: 15px;
+            color: white;
+            margin-top: 12px;
+            background-color: rgba(255, 255, 255, 0.218);
+            overflow: hidden;
+            .health-fill {
+                height: 100%;
+                border-radius: 15px 0 0 15px;
+                transition: width 0.3s ease,background-color 0.5s linear;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 0;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                font-weight: bold;
+            }
+        }
+    }
+}

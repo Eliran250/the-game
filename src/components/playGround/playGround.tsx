@@ -9,16 +9,15 @@ import LostPopup from "../popup/LostPopup";
 import { gameOverSoundPlay } from "../../utils/sound";
 import { useGame } from "../../context/GameProvider";
 import Player from "../player/Player";
+import HealthBar from "../health-bar/HealthBar";
 
 const PlayGround = () => {
 
-    const { setPlayGameMusic, playGameMusic, setPlayGameSound, playGameSound } = useGame()
+    const { setPlayGameMusic, playGameMusic, setPlayGameSound, playGameSound,isGameOver } = useGame()
 
     const [position, setPosition] = useState<number>(160);
 
     const [height, setHeight] = useState<number>(90);
-
-    const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
     const navigate = useNavigate();
 
@@ -40,6 +39,7 @@ const PlayGround = () => {
                 {playGameSound ? <BsMusicNote className="sound-icon" onClick={() => setPlayGameSound(false)} /> :
                     <MdOutlineMusicOff className="sound-icon" onClick={() => setPlayGameSound(true)} />
                 }
+                <HealthBar/>
                 <Player height={height} setHeight={setHeight} isGameOver={isGameOver} setPosition={setPosition} position={position} />
                 {isGameOver && <LostPopup />}
             </div>
