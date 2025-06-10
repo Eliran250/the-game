@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './style/appStyle.scss'
 import Home from './components/home/Home'
 import About from './components/about/About'
-import PlayGround from './components/playGround/playGround'
+import PlayGround from './components/playGround/PlayGround'
 import GameMusic from './components/sound/GameMusic'
 import { GameProvider } from './context/GameProvider'
 

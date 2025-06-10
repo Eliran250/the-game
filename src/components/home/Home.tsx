@@ -10,8 +10,9 @@ const Home = () => {
 
   return (
     <>
+     <div className="home-background"></div> 
       <div className="home-container">
-        <h1 className="home-title">Flapyy bird</h1>
+        <h1 className="home-title">Ben fight</h1>
         <div className="button-container">
           <button onClick={() => { navigate('/game'),setPlayGameMusic(true)}} className="button-home">Play</button>
           <button onClick={() => navigate('/settings')} className="button-home">Settings</button>

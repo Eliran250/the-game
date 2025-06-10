@@ -4,31 +4,29 @@ import { BsMusicNote } from "react-icons/bs";
 import { MdOutlineMusicOff } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import "./playGroundStyle.scss"
-import Bird from "../character/Bird";
-import Qbstacle from "../qabstacle/Qbstacle";
 import { useEffect, useState } from "react";
-import { isCollision } from "../../utils/collision";
 import LostPopup from "../popup/LostPopup";
 import { gameOverSoundPlay } from "../../utils/sound";
 import { useGame } from "../../context/GameProvider";
+import Player from "../player/Player";
 
 const PlayGround = () => {
 
     const { setPlayGameMusic, playGameMusic, setPlayGameSound, playGameSound } = useGame()
 
-    const [position, setPosition] = useState<number>(1);
+    const [position, setPosition] = useState<number>(160);
 
-    const [height, setHeight] = useState<number>(200);
+    const [height, setHeight] = useState<number>(90);
 
     const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isCollision(position, height)) {
-            setIsGameOver(true)
-            gameOverSoundPlay()
-        }
+        // if (isCollision(position, height)) {
+        //     setIsGameOver(true)
+        //     gameOverSoundPlay()
+        // }
     }, [position, height]);
 
     return (
@@ -42,8 +40,7 @@ const PlayGround = () => {
                 {playGameSound ? <BsMusicNote className="sound-icon" onClick={() => setPlayGameSound(false)} /> :
                     <MdOutlineMusicOff className="sound-icon" onClick={() => setPlayGameSound(true)} />
                 }
-                <Bird height={height} setHeight={setHeight} isGameOver={isGameOver} />
-                <Qbstacle position={position} setPosition={setPosition} />
+                <Player height={height} setHeight={setHeight} isGameOver={isGameOver} setPosition={setPosition} position={position} />
                 {isGameOver && <LostPopup />}
             </div>
         </>

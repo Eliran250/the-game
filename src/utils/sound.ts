@@ -6,7 +6,7 @@ export const gameOverSoundPlay = () => {
   audio.play();
 };
 
-export const jumpSoundPlay = () =>{
-    const audio = new Audio(jumpSound);
-    audio.play();
+export const jumpSoundPlay = () => {
+  const audio = new Audio(jumpSound);
+  audio.play();
 }
