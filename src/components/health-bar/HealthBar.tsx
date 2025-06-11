@@ -14,13 +14,11 @@ const HealthBar = () => {
     }
 
     return (
-        <div className="health-bar-container">
-            <div>
-                <div className="health-bar-wrapper">
-                    <img className='heart-image' src={heart} alt="" />
-                    <div className='health-bar'>
-                        <div className='health-fill' style={{ background: healthColor(), width: `${health}%` }}>{health}%</div>
-                    </div>
+        <div>
+            <div className="health-bar-wrapper">
+                <img className='heart-image' src={heart} alt="" />
+                <div className='health-bar'>
+                    <div className='health-fill' style={{ background: healthColor(), width: `${health}%` }}>{health}%</div>
                 </div>
             </div>
         </div>

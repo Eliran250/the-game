@@ -1,7 +1,15 @@
 export interface IPlayer {
-    height: number;
-    setHeight: React.Dispatch<React.SetStateAction<number>>;
-    isGameOver: boolean;
-    position: number;
-    setPosition: React.Dispatch<React.SetStateAction<number>>;
+  // מצבי תנועה
+  isMovingLeft: boolean;
+  isMovingRight: boolean;
+  isJumping: boolean;
+  isAttacking: boolean;
+
+  // ערכים מספריים (לוגיקה)
+  position: number;
+  jumpFrameIndex: number;
+  height:number;
+
+  // פריימים (משאבים ויזואליים)
+  jumpFrames: string[];
 }

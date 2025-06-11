@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import "./playGroundStyle.scss"
 import { useEffect, useState } from "react";
 import LostPopup from "../popup/LostPopup";
-import { gameOverSoundPlay } from "../../utils/sound";
 import { useGame } from "../../context/GameProvider";
-import Player from "../player/Player";
 import HealthBar from "../health-bar/HealthBar";
+import Enemies from "../enemies/Enemies";
+import PlayerMovment from "../player/PlayerMovment";
 
 const PlayGround = () => {
 
@@ -20,13 +20,6 @@ const PlayGround = () => {
     const [height, setHeight] = useState<number>(90);
 
     const navigate = useNavigate();
-
-    useEffect(() => {
-        // if (isCollision(position, height)) {
-        //     setIsGameOver(true)
-        //     gameOverSoundPlay()
-        // }
-    }, [position, height]);
 
     return (
         <>
@@ -40,7 +33,8 @@ const PlayGround = () => {
                     <MdOutlineMusicOff className="sound-icon" onClick={() => setPlayGameSound(true)} />
                 }
                 <HealthBar/>
-                <Player height={height} setHeight={setHeight} isGameOver={isGameOver} setPosition={setPosition} position={position} />
+                <PlayerMovment height={height} setHeight={setHeight} isGameOver={isGameOver} setPosition={setPosition} position={position} />
+                <Enemies/>
                 {isGameOver && <LostPopup />}
             </div>
         </>
