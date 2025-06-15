@@ -1,156 +1,159 @@
-.player-img {
-    position: absolute;
-    height: 70px;
-    width: 70px;
-    left: 10%;
-    transition:
-      left 0.2s ease-in-out,
-      right 0.2s ease-in-out,
-      bottom 0.2s ease-in-out;
-  }
-  .explosion {
-    position: relative;
-    width: 20%;
-  }
+.player-img,
+.explosion {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  transition:
+    left 0.2s ease-in-out,
+    right 0.2s ease-in-out,
+    bottom 0.2s ease-in-out;
+}
+.explosion {
+  pointer-events: none;
+  overflow: visible;
+}
 
-  .particle {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background: orange;
-    border-radius: 50%;
-    animation: explode 1.5s forwards;
-  }
-  .particle:nth-child(1) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0s;
-    transform-origin: center;
-    animation-name: explode1;
-  }
-  .particle:nth-child(2) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.1s;
-    transform-origin: center;
-    animation-name: explode2;
-  }
-  .particle:nth-child(3) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.2s;
-    transform-origin: center;
-    animation-name: explode3;
-  }
-  .particle:nth-child(4) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.3s;
-    transform-origin: center;
-    animation-name: explode4;
-  }
-  .particle:nth-child(5) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.4s;
-    transform-origin: center;
-    animation-name: explode5;
-  }
-  .particle:nth-child(6) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.5s;
-    transform-origin: center;
-    animation-name: explode6;
-  }
-  .particle:nth-child(7) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.6s;
-    transform-origin: center;
-    animation-name: explode7;
-  }
-  .particle:nth-child(8) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.7s;
-    transform-origin: center;
-    animation-name: explode8;
-  }
-  .particle:nth-child(9) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.8s;
-    transform-origin: center;
-    animation-name: explode9;
-  }
-  .particle:nth-child(10) {
-    top: 50%;
-    left: 50%;
-    animation-delay: 0.9s;
-    transform-origin: center;
-    animation-name: explode10;
-  }
+.particle {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgb(0, 89, 255);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+  animation: explode 1.5s forwards;
+}
+.particle:nth-child(1) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0s;
+  transform-origin: center;
+  animation-name: explode1;
+}
+.particle:nth-child(2) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.1s;
+  transform-origin: center;
+  animation-name: explode2;
+}
+.particle:nth-child(3) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.2s;
+  transform-origin: center;
+  animation-name: explode3;
+}
+.particle:nth-child(4) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.3s;
+  transform-origin: center;
+  animation-name: explode4;
+}
+.particle:nth-child(5) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.4s;
+  transform-origin: center;
+  animation-name: explode5;
+}
+.particle:nth-child(6) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.5s;
+  transform-origin: center;
+  animation-name: explode6;
+}
+.particle:nth-child(7) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.6s;
+  transform-origin: center;
+  animation-name: explode7;
+}
+.particle:nth-child(8) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.7s;
+  transform-origin: center;
+  animation-name: explode8;
+}
+.particle:nth-child(9) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.8s;
+  transform-origin: center;
+  animation-name: explode9;
+}
+.particle:nth-child(10) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 0.9s;
+  transform-origin: center;
+  animation-name: explode10;
+}
 
-  /* אנימציות עם תזוזות שונות */
-  @keyframes explode1 {
-    100% {
-      transform: translate(-50px, -50px) scale(0);
-      opacity: 0;
-    }
+/* אנימציות עם תזוזות שונות */
+@keyframes explode1 {
+  100% {
+    transform: translate(-50px, -50px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode2 {
-    100% {
-      transform: translate(50px, -50px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode2 {
+  100% {
+    transform: translate(50px, -50px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode3 {
-    100% {
-      transform: translate(-50px, 50px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode3 {
+  100% {
+    transform: translate(-50px, 50px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode4 {
-    100% {
-      transform: translate(50px, 50px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode4 {
+  100% {
+    transform: translate(50px, 50px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode5 {
-    100% {
-      transform: translate(0px, -70px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode5 {
+  100% {
+    transform: translate(0px, -70px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode6 {
-    100% {
-      transform: translate(-70px, 0px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode6 {
+  100% {
+    transform: translate(-70px, 0px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode7 {
-    100% {
-      transform: translate(70px, 0px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode7 {
+  100% {
+    transform: translate(70px, 0px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode8 {
-    100% {
-      transform: translate(0px, 70px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode8 {
+  100% {
+    transform: translate(0px, 70px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode9 {
-    100% {
-      transform: translate(-40px, 40px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode9 {
+  100% {
+    transform: translate(-40px, 40px) scale(0);
+    opacity: 0;
   }
-  @keyframes explode10 {
-    100% {
-      transform: translate(40px, -40px) scale(0);
-      opacity: 0;
-    }
+}
+@keyframes explode10 {
+  100% {
+    transform: translate(40px, -40px) scale(0);
+    opacity: 0;
   }
-
+}

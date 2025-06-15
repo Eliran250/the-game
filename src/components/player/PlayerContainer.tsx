@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useGame } from '../../context/GameProvider';
 import "./playerStyle.scss"
 import benJumpFrame1 from "../../assets/ben_jump_frame1.png"
 import benJumpFrame2 from "../../assets/ben_jump_frame2.png"
 import benJumpFrame3 from "../../assets/ben_jump_frame3.png"
-import { CHARACTER_INTERVAL, GRAVITY_PIX, JUMP_HEIGHT, jumpKeys, leftKeys, MOVE, PLAYER_WIDTH, rightKeys } from "../../constants/constants";
+import { CHARACTER_INTERVAL, fightKeys, GRAVITY_PIX, JUMP_HEIGHT, jumpKeys, leftKeys, MOVE, PLAYER_WIDTH, rightKeys } from "../../constants/constants";
 import { jumpSoundPlay } from "../../utils/sound";
-import type { IPlayerMovment } from '../../types/interfaces/IPlayerMovment';
+import type { IPlayerContainer } from '../../types/interfaces/IPlayerContainer';
 import Player from './Player';
+import { collosion } from '../../utils/collosion';
 
-const PlayerMovment = ({ height, setHeight, setPosition, position }: IPlayerMovment) => {
+const PlayerContainer = ({ height, setHeight, setPosition, position }: IPlayerContainer) => {
 
-    const { playGameSound } = useGame();
+    const { setIsGameOver, playGameSound, setHealth, health } = useGame();
 
     const jumpFrames = [benJumpFrame1, benJumpFrame2, benJumpFrame3];
 
@@ -25,9 +26,21 @@ const PlayerMovment = ({ height, setHeight, setPosition, position }: IPlayerMovm
 
     const [jumpFrameIndex, setJumpFrameIndex] = useState<number>(0);
 
+    const playerRef = useRef<HTMLImageElement>(null);
+
+    useEffect(() => {
+        const player = document.querySelector('.player-img') as HTMLImageElement;
+        const enemy = document.querySelector('.magmaMonstar-image') as HTMLImageElement;
+        const interval = setInterval(() => {
+            collosion(player, enemy, setHealth, -30);
+        }, 100);
+        return () => clearInterval(interval);
+    }, [])
+
+
     const movment = () => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (playGameSound && jumpKeys.includes(e.code) && height === 90) {
+            if (playGameSound && jumpKeys.includes(e.code) && height === 60) {
                 jumpSoundPlay();
                 setIsJumping(true)
                 setHeight((prev) => Math.max(prev + JUMP_HEIGHT, 0));
@@ -51,7 +64,7 @@ const PlayerMovment = ({ height, setHeight, setPosition, position }: IPlayerMovm
             if (playGameSound) {
                 jumpSoundPlay();
             }
-            if (e.code === "Enter" && isAttacking) {
+            if (fightKeys.includes(e.code)) {
                 setIsAttacking(true);
                 setTimeout(() => {
                     setIsAttacking(false);
@@ -64,7 +77,7 @@ const PlayerMovment = ({ height, setHeight, setPosition, position }: IPlayerMovm
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setHeight((prev) => Math.max(prev - GRAVITY_PIX, 90));
+            setHeight((prev) => Math.max(prev - GRAVITY_PIX, 60));
         }, CHARACTER_INTERVAL);
         return () => clearInterval(interval);
     }, []);
@@ -105,11 +118,15 @@ const PlayerMovment = ({ height, setHeight, setPosition, position }: IPlayerMovm
             clearTimeout(stopJumping);
         };
     }, [isJumping]);
+
+    useEffect(() => {
+        health <= 0 && setIsGameOver(true)
+    })
     return (
         <div>
-            <Player isMovingRight={isMovingRight} jumpFrameIndex={jumpFrameIndex} isAttacking={isAttacking} isJumping={isJumping} isMovingLeft={isMovingLeft} height={height} position={position} jumpFrames={jumpFrames} />
+            <Player ref={playerRef} isMovingRight={isMovingRight} jumpFrameIndex={jumpFrameIndex} isAttacking={isAttacking} isJumping={isJumping} isMovingLeft={isMovingLeft} height={height} position={position} jumpFrames={jumpFrames} />
         </div>
     )
 }
 
-export default PlayerMovment
+export default PlayerContainer

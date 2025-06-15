@@ -2,13 +2,13 @@ import { createContext, useContext, useState } from "react";
 
 interface GameContextType {
     playGameMusic: boolean;
-    setPlayGameMusic: (status: boolean) => void;
+    setPlayGameMusic:  React.Dispatch<React.SetStateAction<boolean>>;
     playGameSound: boolean;
-    setPlayGameSound: (status: boolean) => void;
+    setPlayGameSound:  React.Dispatch<React.SetStateAction<boolean>>;
     health: number;
-    setHealth: (health: number) => void;
+    setHealth:  React.Dispatch<React.SetStateAction<number>>;
     isGameOver: boolean;
-    setIsGameOver:(status:boolean) => void;
+    setIsGameOver: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const GameContext = createContext<GameContextType | null>(null);
@@ -16,7 +16,7 @@ const GameContext = createContext<GameContextType | null>(null);
 export const GameProvider = ({ children }: { children: React.ReactNode }) => {
     const [playGameMusic, setPlayGameMusic] = useState(true);
     const [playGameSound, setPlayGameSound] = useState(true);
-    const [health, setHealth] = useState(100);
+    const [health, setHealth] = useState<number>(100);
     const [isGameOver, setIsGameOver] = useState<boolean>(false);
 
 

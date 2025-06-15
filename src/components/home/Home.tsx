@@ -12,9 +12,9 @@ const Home = () => {
     <>
      <div className="home-background"></div> 
       <div className="home-container">
-        <h1 className="home-title">Ben fight</h1>
+        <h1 className="home-title">The cave</h1>
         <div className="button-container">
-          <button onClick={() => { navigate('/game'),setPlayGameMusic(true)}} className="button-home">Play</button>
+          <button onClick={() => { navigate('/game'), setPlayGameMusic(true)}} className="button-home">Play</button>
           <button onClick={() => navigate('/settings')} className="button-home">Settings</button>
           <button onClick={() => navigate('/about')} className="button-home">About</button>
         </div>

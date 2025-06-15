@@ -2,8 +2,10 @@ import "./playerStyle.scss"
 import { getPlayerImage } from "../../utils/getPlayerImage"
 import { useGame } from "../../context/GameProvider";
 import type { IPlayer } from "../../types/interfaces/IPlayer";
+import { forwardRef } from "react";
 
-const Player = ({ isMovingRight, jumpFrameIndex, isAttacking, isJumping, isMovingLeft, position, jumpFrames, height }: IPlayer) => {
+const Player = forwardRef<HTMLImageElement, IPlayer>((props, ref) => {  
+    const { isMovingRight, jumpFrameIndex, isAttacking, isJumping, isMovingLeft, height, position, jumpFrames } = props;
 
     const { isGameOver } = useGame();
 
@@ -17,14 +19,14 @@ const Player = ({ isMovingRight, jumpFrameIndex, isAttacking, isJumping, isMovin
     });
 
     return (
-        <div>
-            {!isGameOver ? <img className="player-img" style={{ bottom: `${height}px`, left: `${position}px` }} src={imageSrc} /> : <div className="explosion" style={{ bottom: `${height}px` }}>
+        <div >
+            {!isGameOver ? <img ref={ref} className="player-img" style={{ bottom: `${height}px`, left: `${position}px` }} src={imageSrc} /> : <div className="explosion" style={{ bottom: `${height}px`, left:`${position}px` }}>
                 {[...Array(10)].map((_, i) => (
                     <div key={i} className="particle" />
                 ))}
             </div>}
         </div>
     )
-}
+});
 
 export default Player

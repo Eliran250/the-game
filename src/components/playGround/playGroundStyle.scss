@@ -2,11 +2,27 @@
     position: relative;
     height: 100%;
     width: 100%;
-    background-image: url("../../assets/background.jpg");
+    background-image: url("../../assets/lava_cave.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
+    .floor {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: black;
+        background-image: radial-gradient(circle at 20% 30%, #444444 10%, transparent 11%),
+            radial-gradient(circle at 50% 50%, #555555 15%, transparent 16%),
+            radial-gradient(circle at 80% 40%, #ff5500 12%, transparent 13%),
+            radial-gradient(circle at 30% 70%, #ff0000 14%, transparent 15%);
+        background-repeat: repeat-x;
+        background-size: 100px 80px;
+        box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.7);
+        border-top: 2px solid gray;
+    }
     .back-icon {
         position: absolute;
         top: 10px;
@@ -40,7 +56,7 @@
         padding: 4px;
         cursor: pointer;
     }
-    .sound-icon{
+    .sound-icon {
         position: absolute;
         top: 10px;
         right: 90px;
